@@ -113,7 +113,7 @@ export class SystemState {
    * @param timestamp timestamp to use. Default to current time.
    */
   async updateObjectPositions(timestamp = this.getUnixTimestamp()) {
-    this.allObjects = await loadData(`${API_BASE}/positions?timestamp=${timestamp}`);
+    this.allObjects = await loadData(`${API_OBJECTS}/positions?timestamp=${timestamp}`);
     this.needMapRedraw = true;
   }
 
@@ -297,7 +297,7 @@ export function getSystemState() {
 export async function fetchPositionAtTime(name: string, timestamp: number) {
   try {
     const res = await fetch(
-      `${API_BASE}/position?name=${encodeURIComponent(name)}&timestamp=${timestamp}`,
+      `${API_OBJECTS}/position?name=${encodeURIComponent(name)}&timestamp=${timestamp}`,
     );
     if (!res.ok) {
       console.error(
