@@ -12,7 +12,7 @@ class WordGenerator:
   def __init__(self):
     pass
   
-  def generate(self, type: WordType, syllable_count=0):
+  def generate(self, type: WordType=None, syllable_count=0):
     syllables = []
     
     if syllable_count == 0:
@@ -20,6 +20,9 @@ class WordGenerator:
 
     for _ in range(syllable_count - 1):
       syllables.append(self.generate_syllable())
+      
+    if type is None:
+      type = random.choice(list(WordType))
       
     match type:
       case WordType.NOUN:
