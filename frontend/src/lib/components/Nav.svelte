@@ -7,6 +7,7 @@
     <a class="nav-item" href="/">Home</a>
     <a class="nav-item" href="/transit">Transit</a>
     <a class="nav-item" href="/map">Map</a>
+    <a class="nav-item" href="/language">Language</a>
   </div>
 </nav>
 
