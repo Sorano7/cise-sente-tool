@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { getSystemState, loadData, API_CLOCK } from "./System.svelte";
+  import { getSystemState, loadData } from "$lib/system.svelte";
 
   const systemState = getSystemState();
 
