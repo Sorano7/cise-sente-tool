@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount, setContext } from "svelte";
-  import { loadData, getSystemState } from "./System.svelte";
+  import { loadData, getSystemState } from "$lib/system.svelte";
 
   const systemState = getSystemState();
   let { fullScreen = false } = $props();

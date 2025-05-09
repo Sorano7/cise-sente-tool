@@ -1,12 +1,12 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { getSystemState, loadData } from "./System.svelte";
+  import { getSystemState, loadData } from "$lib/system.svelte";
+  import { API_CLOCK } from "$lib/api.svelte";
 
   const systemState = getSystemState();
 
   let { showAsOverlay = false, font = 'Space Mono' } = $props();
 
-  const API = "http://localhost:8001/api/datetime";
   const SYNC_INTERVAL = 300000;
 
   interface CalendarDisplay {
@@ -62,7 +62,7 @@
    * Sync clock with API
    */
   async function syncClock() {
-    const data: ClockResponse = await loadData(`${API}/init`);
+    const data: ClockResponse = await loadData(`${API_CLOCK}/init`);
 
     systemState.timestamp = Math.round(data.timestamp);
     meaji = data.meaji;
