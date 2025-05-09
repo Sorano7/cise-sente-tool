@@ -1,7 +1,7 @@
 from enum import Enum
 import random
 from .phonology import CONSONANTS, VOWELS, CODAS
-from .utils import weighted_random, get_weights
+from .utils import weighted_random
 
 class WordType(Enum):
   NOUN = 1
