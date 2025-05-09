@@ -1,6 +1,6 @@
 import { getContext, setContext } from "svelte";
 import { SvelteMap } from "svelte/reactivity";
-import { API_OBJECTS, API_CLOCK, API_PATH_FIND, API_VESSELS } from "./api.svelte";
+import { API_OBJECTS, API_CLOCK, API_PATH_FIND, API_VESSELS, loadData } from "./api.svelte";
 
 export const TIMESTAMP_OFFSET = 23164249536;
 
@@ -24,16 +24,6 @@ interface PathResult {
   launchTime: number;
   legs: Record<string, any>[];
   summary: Record<string, any>;
-}
-
-export async function loadData(url: string) {
-  try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("Fetch failed");
-    return await res.json();
-  } catch (error) {
-    console.error(`Failed to fetch ${url}: ${error}`);
-  }
 }
 
 interface VesselConfig {

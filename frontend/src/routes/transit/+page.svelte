@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { setSystemState } from "$lib/components/System.svelte";
+  import { setSystemState } from "$lib/system.svelte";
   import Clock from "$lib/components/Clock.svelte";
   import Map from "$lib/components/Map.svelte";
   import TransitDetail from "$lib/components/TransitDetail.svelte";
