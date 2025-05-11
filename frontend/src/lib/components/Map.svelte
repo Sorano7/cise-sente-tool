@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount, setContext } from "svelte";
-  import { loadData, getSystemState } from "./System.svelte";
+  import { getSystemState } from "$lib/system.svelte";
+  import { loadData } from "$lib/api.svelte";
 
   const systemState = getSystemState();
   let { fullScreen = false } = $props();
@@ -871,6 +872,7 @@
     flex: 1 1 auto;
     overflow: hidden;
     position: relative;
+    min-height: 50vh;
   }
 
   .canvas-container-full {

@@ -1,16 +1,8 @@
 import { getContext, setContext } from "svelte";
 import { SvelteMap } from "svelte/reactivity";
+import { API_OBJECTS, API_CLOCK, API_PATH_FIND, API_VESSELS, loadData } from "./api.svelte";
 
 export const TIMESTAMP_OFFSET = 23164249536;
-
-/* -- API Endpoints -- */
-export const API_BASE = "http://localhost:8001/api";
-export const API_ORBITS = "/orbit_data.json";
-export const API_BELTS = "/asteroid_belts.json";
-export const API_OBJECTS = `${API_BASE}/objects`;
-export const API_PATH_FIND = `${API_BASE}/pathfind`;
-export const API_VESSELS = `${API_BASE}/vessels`;
-export const API_CLOCK = `${API_BASE}/datetime`;
 
 interface ObjectData {
   x: number;
@@ -32,16 +24,6 @@ interface PathResult {
   launchTime: number;
   legs: Record<string, any>[];
   summary: Record<string, any>;
-}
-
-export async function loadData(url: string) {
-  try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("Fetch failed");
-    return await res.json();
-  } catch (error) {
-    console.error(`Failed to fetch ${url}: ${error}`);
-  }
 }
 
 interface VesselConfig {
@@ -113,7 +95,7 @@ export class SystemState {
    * @param timestamp timestamp to use. Default to current time.
    */
   async updateObjectPositions(timestamp = this.getUnixTimestamp()) {
-    this.allObjects = await loadData(`${API_BASE}/positions?timestamp=${timestamp}`);
+    this.allObjects = await loadData(`${API_OBJECTS}/positions?timestamp=${timestamp}`);
     this.needMapRedraw = true;
   }
 
@@ -297,7 +279,7 @@ export function getSystemState() {
 export async function fetchPositionAtTime(name: string, timestamp: number) {
   try {
     const res = await fetch(
-      `${API_BASE}/position?name=${encodeURIComponent(name)}&timestamp=${timestamp}`,
+      `${API_OBJECTS}/position?name=${encodeURIComponent(name)}&timestamp=${timestamp}`,
     );
     if (!res.ok) {
       console.error(

@@ -1,11 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { getSystemState, loadData, API_CLOCK } from "./System.svelte";
+  import { getSystemState } from "$lib/system.svelte";
 
   const systemState = getSystemState();
 
   let selectedPreset = $state("");
-  let selectedObject = $state("");
   let launchTimeInput = $state(systemState.timestamp.toFixed(0).toString());
 
   onMount(async () => {

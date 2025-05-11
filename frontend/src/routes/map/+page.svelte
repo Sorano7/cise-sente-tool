@@ -1,7 +1,7 @@
 <script lang="ts">
   import Clock from "$lib/components/Clock.svelte";
   import Map from "$lib/components/Map.svelte";
-  import { setSystemState } from "$lib/components/System.svelte";
+  import { setSystemState } from "$lib/system.svelte";
 
   setSystemState();
 </script>

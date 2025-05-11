@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getSystemState } from "./System.svelte";
+  import { getSystemState } from "$lib/system.svelte";
 
   const systemState = getSystemState();
 </script>
