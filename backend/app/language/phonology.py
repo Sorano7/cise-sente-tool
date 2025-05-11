@@ -32,3 +32,12 @@ CODAS = {
   'k': '/./',
   's': '/s/',
 }
+
+COMPOSITES = {
+  'ry': '/rj/',
+  'hy': '/hj/',
+  'ky': '/kj/',
+  'gy': '/gj/',
+  'ny': '/nj/',
+  'my': '/my',
+}
